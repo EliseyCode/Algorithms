@@ -5,6 +5,10 @@ public final class BubbleSort {
     /**
      * @param array array to be sorted
      * @param <T>   Object that can be compared with another object
+     *              <p>
+     *              This method is prefer than
+     * {@link #sortVariationTwo(Comparable[])}
+     * because in best case if array is already sorted time complexity will be O(n)
      */
 
     public static <T extends Comparable<? super T>> void sortVariationOne(T[] array) {
@@ -25,6 +29,10 @@ public final class BubbleSort {
     /**
      * @param array array to be sorted
      * @param <T>   Object that can be compared with another object
+     *              <p>
+     *              This method is worse than
+     * {@linkplain #sortVariationOne(Comparable[])}
+     * because of time complexity is guaranteed O(n2) no matter is sorted array or not.
      */
 
     public static <T extends Comparable<? super T>> void sortVariationTwo(T[] array) {
