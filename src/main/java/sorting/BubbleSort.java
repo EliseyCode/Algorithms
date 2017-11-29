@@ -2,18 +2,6 @@ package sorting;
 
 public final class BubbleSort {
 
-    public static void main(String[] args) {
-        Integer[] array = new Integer[]{5, 3, 17, 9, 1, 6, 7, 0, 8, 11, 2};
-        for (int x : array) {
-            System.out.print(x + " ");
-        }
-        sortVariationOne(array);
-        System.out.println();
-        for (int x : array) {
-            System.out.print(x + " ");
-        }
-    }
-
     /**
      * @param array array to be sorted
      * @param <T>   Object that can be compared with another object
@@ -36,7 +24,7 @@ public final class BubbleSort {
 
     /**
      * @param array array to be sorted
-     * @param <T>   Object taht can be compared with another object
+     * @param <T>   Object that can be compared with another object
      */
 
     public static <T extends Comparable<? super T>> void sortVariationTwo(T[] array) {
