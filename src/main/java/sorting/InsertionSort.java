@@ -1,32 +1,38 @@
 package sorting;
 
-public final class InsertionSort {
-    public static void main(String[] args) {
+import java.util.NoSuchElementException;
 
-    }
+public final class InsertionSort {
 
     public static <T extends Comparable<? super T>> void sort(T[] array) {
-        int sortedEndIndex = 1;
+        int currentIndex = 1;
 
-        while (sortedEndIndex < array.length) {
-            if (array[sortedEndIndex].compareTo(array[sortedEndIndex - 1]) < 0) {
-                int indexToInsert = getIndexToInsert(array, array[sortedEndIndex - 1]);
-                insert(array, indexToInsert, sortedEndIndex);
+        while (currentIndex < array.length) {
+            if (array[currentIndex].compareTo(array[currentIndex - 1]) < 0) {
+                int indexToInsert = getIndexToInsert(array, array[currentIndex]);
+                insertToArray(array, indexToInsert, currentIndex);
             }
+            currentIndex++;
         }
     }
 
-    private static <T> void insert(T[] array, int indexToInsert, int sortedEndIndex) {
-            throw new UnsupportedOperationException();
+    private static <T> void insertToArray(T[] array, int indexToInsert, int currentIndex) {
+        T temp = array[indexToInsert];
+        array[indexToInsert] = array[currentIndex];
+
+        for (int index = currentIndex; index > indexToInsert; index--) {
+            array[index] = array[index - 1];
+        }
+        array[indexToInsert + 1] = temp;
     }
 
-    private static <T extends Comparable<? super T>> int getIndexToInsert(T[] array, T t) {
-        for (int index = 0; index < array.length; index++) {
-            if (array[index].compareTo(t) > 0) {
-                return index;
+    private static <T extends Comparable<? super T>> int getIndexToInsert(T[] array, T element) {
+        for (int i = 0; i < array.length; i++) {
+            if (array[i].compareTo(element) > 0) {
+                return i;
             }
         }
-        throw new IllegalArgumentException();
+        throw new NoSuchElementException();
     }
 
     private InsertionSort() {
