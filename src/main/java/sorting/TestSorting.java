@@ -1,16 +1,18 @@
 package sorting;
 
 import java.io.*;
+import java.sql.Time;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Scanner;
 
 public class TestSorting {
     public static void main(String[] args) throws IOException {
 
-        @SuppressWarnings("rowtype")
+        @SuppressWarnings("rawtype")
         List<Integer> list = new ArrayList();
-        Scanner scanner = new Scanner(new File("path_to_test_file_input/1Kints.txt")); //D:/work/algs4-data/4Kints.txt
+        Scanner scanner = new Scanner(new File("D:/work/algs4-data/1Mints.txt")); //D:/work/algs4-data/4Kints.txt
         while (scanner.hasNext()) {
             list.add(scanner.nextInt());
         }
@@ -18,9 +20,26 @@ public class TestSorting {
 
         Integer[] array = list.toArray(new Integer[0]);
 
-        InsertionSort.sort(array);
+        new Timer();
 
-        FileWriter writer = new FileWriter("path_to_test_file_output_result.txt", false);
+//        SelectionSort.sort(array);
+
+        Arrays.sort(array);
+
+        int counter = 0;
+        for (int x : array) {
+            if (counter == 100) {
+                System.out.println();
+                counter = 0;
+            }
+            System.out.print(x + " ");
+            counter++;
+        }
+
+
+        Timer.setIsDone(true);
+
+        FileWriter writer = new FileWriter("D:/work/sortOutput.txt", false);
         System.out.println("DoWrite");
         for (Integer anArray : array) {
             writer.write(anArray.toString());
