@@ -1,20 +1,16 @@
 
 public class Fibonacci {
 
+    private static final int MOD = (int) (1e9 - 7);
 
-    public static void main(String[] args) {
-        Fibonacci.run();
-    }
-
-    private static void run() {
-        System.out.println(fibonacci(6));
-    }
-
-    private static int fibonacci(int n) {
-        if (n < 2) {
-            return n;
+    public static int fibonacci(int n) {
+        int a = 0;
+        int b = 1;
+        for (int i = 0; i < n; i++) {
+            int c = (a + b) % MOD;
+            a = b;
+            b = c;
         }
-
-        return fibonacci(n - 1) + fibonacci(n - 2);
+        return a;
     }
 }
